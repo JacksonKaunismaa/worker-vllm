@@ -18,9 +18,9 @@ Deploy OpenAI-Compatible Blazing-Fast LLM Endpoints powered by the [vLLM](https:
 ### 1. UI for Deploying vLLM Worker on RunPod console:
 ![Demo of Deploying vLLM Worker on RunPod console with new UI](media/ui_demo.gif)
 
-### 2. Worker vLLM `v2.3.0` with vLLM `0.8.3` now available under `stable` tags 
+### 2. Worker vLLM `v2.4.0` with vLLM `0.8.4` now available under `stable` tags 
 
-Update v2.3.0 is now available, use the image tag `runpod/worker-v1-vllm:v2.3.0stable-cuda12.1.0`.
+Update v2.3.0 is now available, use the image tag `runpod/worker-v1-vllm:v2.4.0stable-cuda12.1.0`.
 
 ### 3. OpenAI-Compatible [Embedding Worker](https://github.com/runpod-workers/worker-infinity-embedding) Released
 Deploy your own OpenAI-compatible Serverless Endpoint on RunPod with multiple embedding models and fast inference for RAG and more! 
@@ -82,7 +82,7 @@ Below is a summary of the available RunPod Worker images, categorized by image s
 
 | CUDA Version | Stable Image Tag                  | Development Image Tag             | Note                                                        |
 |--------------|-----------------------------------|-----------------------------------|----------------------------------------------------------------------|
-| 12.1.0       | `runpod/worker-v1-vllm:v2.3.0stable-cuda12.1.0` | `runpod/worker-v1-vllm:v2.3.0dev-cuda12.1.0` | When creating an Endpoint, select CUDA Version 12.3, 12.2 and 12.1 in the filter. |
+| 12.1.0       | `runpod/worker-v1-vllm:v2.4.0stable-cuda12.1.0` | `runpod/worker-v1-vllm:v2.4.0dev-cuda12.1.0` | When creating an Endpoint, select CUDA Version 12.3, 12.2 and 12.1 in the filter. |
 
 
 
@@ -125,7 +125,7 @@ Below is a summary of the available RunPod Worker images, categorized by image s
 | `MAX_NUM_SEQS`                            | 256                   | `int`                                      | Maximum number of sequences per iteration. |
 | `MAX_LOGPROBS`                            | 20                    | `int`                                      | Max number of log probs to return when logprobs is specified in SamplingParams. |
 | `DISABLE_LOG_STATS`                       | False                 | `bool`                                     | Disable logging statistics. |
-| `QUANTIZATION`                            | None                  | ['awq', 'squeezellm', 'gptq']              | Method used to quantize the weights. |
+| `QUANTIZATION`                            | None                  | ['awq', 'squeezellm', 'gptq', 'bitsandbytes']              | Method used to quantize the weights. |
 | `ROPE_SCALING`                            | None                  | `dict`                                     | RoPE scaling configuration in JSON format. |
 | `ROPE_THETA`                              | None                  | `float`                                    | RoPE theta. Use with rope_scaling. |
 | `TOKENIZER_POOL_SIZE`                     | 0                     | `int`                                      | Size of tokenizer pool to use for asynchronous tokenization. |
