@@ -15,18 +15,6 @@
             {
                 "key": "MODEL_NAME",
                 "value": "facebook/opt-350m"
-            },
-            {
-                "key": "HF_TOKEN",
-                "value": "hf_dummy_token_for_testing_purposes_only"
-            },
-            {
-                "key": "MAX_MODEL_LEN",
-                "value": "8192"
-            },
-            {
-                "key": "GPU_MEMORY_UTILIZATION",
-                "value": "0.95"
             }
         ],
         "allowedCudaVersions": [
