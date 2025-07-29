@@ -26,6 +26,7 @@ DEFAULT_ARGS = {
     "trust_remote_code": os.getenv('TRUST_REMOTE_CODE', 'False').lower() == 'true',
     "download_dir": os.getenv('DOWNLOAD_DIR', None),
     "load_format": os.getenv('LOAD_FORMAT', 'auto'),
+    "config_format": os.getenv('CONFIG_FORMAT', 'auto'),
     "dtype": os.getenv('DTYPE', 'auto'),
     "kv_cache_dtype": os.getenv('KV_CACHE_DTYPE', 'auto'),
     "quantization_param_path": os.getenv('QUANTIZATION_PARAM_PATH', None),
@@ -92,6 +93,9 @@ DEFAULT_ARGS = {
     "otlp_traces_endpoint": os.getenv('OTLP_TRACES_ENDPOINT', None),
     "use_v2_block_manager": os.getenv('USE_V2_BLOCK_MANAGER', 'true'),
 }
+limit_mm_env = os.getenv('LIMIT_MM_PER_PROMPT')
+if limit_mm_env is not None:
+    DEFAULT_ARGS["limit_mm_per_prompt"] = convert_limit_mm_per_prompt(limit_mm_env)
 
 def match_vllm_args(args):
     """Rename args to match vllm by:
@@ -122,7 +126,7 @@ def get_local_args():
         local_args = json.load(f)
 
     if local_args.get("MODEL_NAME") is None:
-        raise ValueError("Model name not found in /local_model_args.json. There was a problem when baking the model in.")
+        logging.warning("Model name not found in /local_model_args.json. There maybe was a problem when baking the model in.")
 
     logging.info(f"Using baked in model with args: {local_args}")
     os.environ["TRANSFORMERS_OFFLINE"] = "1"
